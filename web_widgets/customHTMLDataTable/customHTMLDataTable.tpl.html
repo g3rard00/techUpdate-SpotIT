@@ -1,0 +1,42 @@
+
+    <div class="table-responsive">
+        <table bonitable
+               sort-options="ctrl.sortOptions"
+               on-sort="ctrl.sortHandler()"
+               class="table" ng-class="{'table-hover': ctrl.isSelectable()}">
+            <thead>
+                <tr>
+                    <th ng-repeat="header in properties.headers">
+                        <div ng-if="ctrl.isColumnSortable($index)" bo-sorter="{{properties.columnsKey[$index]}}">
+                                {{ header | uiTranslate }}
+                        </div>
+                        <div ng-if="!ctrl.isColumnSortable($index)">
+                            {{ header | uiTranslate }}
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody ng-if="ctrl.hasMultiColumns()">
+            <tr ng-repeat="row in ctrl.results" ng-click="ctrl.selectRowHandler(row)"
+                ng-class="{'info': row === properties.selectedRow}">
+                <td ng-repeat="column in properties.columnsKey track by $index">
+                    <div ng-bind-html="$eval(column, row) | uiTranslate"></div>
+                </td>
+            </tr>
+            </tbody>
+            <tbody ng-if="!ctrl.hasMultiColumns()">
+            <tr ng-repeat="row in ctrl.results" ng-click="ctrl.selectRowHandler(row)"
+                ng-class="{'info': row === properties.selectedRow}">
+                <td> {{ row | uiTranslate }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <pagination ng-if="ctrl.pagination.total > properties.pageSize" 
+                    total-items="ctrl.pagination.total" 
+                    items-per-page="properties.pageSize" 
+                    direction-links="false" 
+                    boundary-links="false"
+                    ng-model="ctrl.pagination.currentPage"
+                    ng-change="ctrl.paginationHandler()">
+        </pagination>
+    </div>

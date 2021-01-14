@@ -1,0 +1,17 @@
+<div ng-class="'panel panel-' + properties.style">
+    <div class="panel-heading" ng-bind-html="properties.title | uiTranslate"></div>
+     <div class="panel-body info-link">
+         <dl class="dl-horizontal">
+             <dt ng-repeat-start="item in properties.panelContent" ng-if="!item.action" ng-bind-html="item.dt | uiTranslate"></dt>
+             <dd ng-repeat-end ng-if="!item.action" ng-bind-html="item.dd | uiTranslate"></dd>
+             <dt ng-repeat-start="item in properties.panelContent" ng-if="item.action" ng-bind-html="item.dt | uiTranslate"></dt>
+             <dd ng-repeat-end ng-if="item.action">
+                  <button 
+                     type="button" 
+                     ng-class="'btn btn-' + item.action.buttonStyle + ' custom-button-link'"
+                     ng-click="ctrl.action(item.action)"
+                     ng-bind-html="item.action.label | uiTranslate"></button>
+             </dd>
+         </dl>
+     </div>
+</div>

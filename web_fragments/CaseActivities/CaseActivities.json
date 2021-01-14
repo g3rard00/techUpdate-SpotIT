@@ -1,0 +1,105 @@
+{
+  "designerVersion" : "1.11.46",
+  "previousDesignerVersion" : "1.9.24",
+  "id" : "CaseActivities",
+  "name" : "CaseActivities",
+  "lastUpdate" : 1603287912403,
+  "rows" : [
+    [
+      {
+        "type" : "component",
+        "dimension" : {
+          "xs" : 12,
+          "sm" : 12,
+          "md" : 12,
+          "lg" : 12
+        },
+        "propertyValues" : {
+          "cssClasses" : {
+            "type" : "constant",
+            "value" : ""
+          },
+          "hidden" : {
+            "type" : "constant",
+            "value" : false
+          },
+          "headers" : {
+            "type" : "constant",
+            "value" : [ ]
+          },
+          "type" : {
+            "type" : "constant",
+            "value" : "Variable"
+          },
+          "apiUrl" : {
+            "type" : "constant",
+            "value" : "../API/"
+          },
+          "params" : {
+            "type" : "constant"
+          },
+          "content" : {
+            "type" : "expression",
+            "value" : "activities"
+          },
+          "columnsKey" : {
+            "type" : "expression",
+            "value" : "formattedColumn"
+          },
+          "sortColumns" : {
+            "type" : "constant"
+          },
+          "selectedRow" : {
+            "type" : "variable",
+            "value" : ""
+          },
+          "pageSize" : {
+            "type" : "constant",
+            "value" : 10
+          },
+          "filter" : {
+            "type" : "constant"
+          },
+          "onSelectFunction" : {
+            "type" : "variable",
+            "value" : ""
+          }
+        },
+        "reference" : "3b344fbf-dcd4-4753-a599-93f1ea338e04",
+        "hasValidationError" : false,
+        "id" : "customHTMLDataTable"
+      }
+    ]
+  ],
+  "assets" : [ ],
+  "inactiveAssets" : [ ],
+  "variables" : {
+    "activities" : {
+      "type" : "constant",
+      "value" : [
+        ""
+      ],
+      "exposed" : true
+    },
+    "formattedColumn" : {
+      "type" : "expression",
+      "value" : [
+        "return [",
+        "function(input){",
+        "    var value = `<span title=\\\"${input.row.description}\\\">${input.row.name}</span>`;",
+        "    if(input.row.url){",
+        "        value = `<a title=\\\"${input.row.description}\\\" href=\\\"${input.row.url}\\\" target=\\\"${input.row.target}\\\">${input.row.name}</a>`;",
+        "    }",
+        "     if(input.row.executedBy){",
+        "         value = value + ` &nbsp;&nbsp; <span class=\\\"text-muted\\\"><i class=\\\"glyphicon glyphicon-user\\\"> </i> ${input.row.executedBy}</span>`",
+        "     }",
+        "   return value",
+        "}, ",
+        "\"acmState ? acmState : bpmState |labelized\"];"
+      ],
+      "exposed" : false
+    }
+  },
+  "hasValidationError" : false,
+  "type" : "fragment"
+}

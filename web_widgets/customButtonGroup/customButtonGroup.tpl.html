@@ -1,0 +1,10 @@
+<div class="text-{{ properties.alignment }}">
+    <div class="btn-group" role="group" aria-label="...">
+      <button type="button" 
+         ng-repeat="button in properties.buttons"  
+          ng-click="ctrl.action(button)"
+         ng-class="'btn btn-' + button.style" 
+         ng-disabled="button.disabled || ctrl.busy"
+         ng-bind-html="button.label | uiTranslate"></button>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{
+  "designerVersion" : "1.10.12",
+  "previousDesignerVersion" : "1.9.45",
+  "id" : "customTimeline",
+  "name" : "Timeline",
+  "lastUpdate" : 1603287912386,
+  "template" : "@customTimeline.tpl.html",
+  "controller" : "@customTimeline.ctrl.js",
+  "custom" : true,
+  "properties" : [
+    {
+      "label" : "Events",
+      "name" : "events",
+      "type" : "collection",
+      "bond" : "expression"
+    }
+  ],
+  "assets" : [ ],
+  "requiredModules" : [ ],
+  "type" : "widget",
+  "hasHelp" : false
+}

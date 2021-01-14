@@ -1,0 +1,37 @@
+{
+  "designerVersion" : "1.10.12",
+  "previousDesignerVersion" : "1.9.45",
+  "id" : "customButtonGroup",
+  "name" : "ButtonGroup",
+  "lastUpdate" : 1603287912290,
+  "template" : "@customButtonGroup.tpl.html",
+  "controller" : "@customButtonGroup.ctrl.js",
+  "custom" : true,
+  "properties" : [
+    {
+      "label" : "Button list",
+      "name" : "buttons",
+      "caption" : "",
+      "help" : "Expected JSON format for a button:\n{ \n    \"label\" : \"ButtonLabel\" ,\n    \"style\" : \"primary\",\n    \"action\" : \"POST\",\n    \"url\" : \"../API/..\",\n    \"dataToSend\" : {..},\n    \"targetUrlOnSuccess\" : \"../home\",\n    ... all standard button properties \n}",
+      "type" : "collection",
+      "defaultValue" : [ ],
+      "bond" : "expression"
+    },
+    {
+      "label" : "Alignment",
+      "name" : "alignment",
+      "type" : "choice",
+      "defaultValue" : "left",
+      "choiceValues" : [
+        "left",
+        "center",
+        "right"
+      ],
+      "bond" : "constant"
+    }
+  ],
+  "assets" : [ ],
+  "requiredModules" : [ ],
+  "type" : "widget",
+  "hasHelp" : false
+}

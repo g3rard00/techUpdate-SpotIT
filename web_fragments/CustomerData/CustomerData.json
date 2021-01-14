@@ -1,0 +1,118 @@
+{
+  "designerVersion" : "1.11.46",
+  "previousDesignerVersion" : "1.9.24",
+  "id" : "CustomerData",
+  "name" : "CustomerData",
+  "lastUpdate" : 1603287912437,
+  "rows" : [
+    [
+      {
+        "type" : "container",
+        "dimension" : {
+          "xs" : 12,
+          "sm" : 12,
+          "md" : 12,
+          "lg" : 12
+        },
+        "propertyValues" : {
+          "cssClasses" : {
+            "type" : "constant",
+            "value" : "padding-left-20 padding-right-30"
+          },
+          "hidden" : {
+            "type" : "constant",
+            "value" : false
+          },
+          "repeatedCollection" : {
+            "type" : "variable",
+            "value" : ""
+          }
+        },
+        "reference" : "b0f67488-caa9-483f-b226-4235a368a416",
+        "hasValidationError" : false,
+        "id" : "pbContainer",
+        "rows" : [
+          [
+            {
+              "type" : "component",
+              "dimension" : {
+                "xs" : 12,
+                "sm" : 12,
+                "md" : 12,
+                "lg" : 12
+              },
+              "propertyValues" : {
+                "cssClasses" : {
+                  "type" : "constant",
+                  "value" : "panel-fixed-height"
+                },
+                "hidden" : {
+                  "type" : "constant",
+                  "value" : false
+                },
+                "style" : {
+                  "type" : "constant",
+                  "value" : "primary"
+                },
+                "title" : {
+                  "type" : "interpolation",
+                  "value" : "Customer information"
+                },
+                "panelContent" : {
+                  "type" : "expression",
+                  "value" : "panelContent"
+                }
+              },
+              "reference" : "b083f10f-0e7b-4dad-941f-bb5482a9f587",
+              "hasValidationError" : false,
+              "id" : "customPanel"
+            }
+          ]
+        ]
+      }
+    ]
+  ],
+  "assets" : [ ],
+  "inactiveAssets" : [ ],
+  "variables" : {
+    "panelContent" : {
+      "type" : "expression",
+      "value" : [
+        "return [",
+        "    {",
+        "        \"dt\" : \"<span class=\\\"glyphicon glyphicon-user\\\"> </span> Customer\",",
+        "        \"dd\" : $data.customer.firstName + ' ' + $data.customer.lastName + ' (' + $data.customer.customerId + ')'",
+        "    },",
+        "    {",
+        "        \"dt\" : \"<span class=\\\"glyphicon glyphicon-envelope\\\"> </span> Email\",",
+        "        \"dd\" : \"<a class=\\\"text-info\\\" href=\\\"mailto:\" + $data.customer.email + \"\\\">\" + $data.customer.email + \"</a>\"",
+        "    },",
+        "    {",
+        "        \"dt\" : \"<span class=\\\"glyphicon glyphicon-earphone\\\"> </span> Phone\",",
+        "        \"dd\" : \"<a class=\\\"text-info\\\" href=\\\"tel:\" + $data.customer.phoneNumber + \"\\\">\" + $data.customer.phoneNumber + \"</a>\"",
+        "    },",
+        "    {",
+        "        \"dt\" : \"<span class=\\\"glyphicon glyphicon-piggy-bank\\\"> </span> Account\",",
+        "        \"action\" : {",
+        "            \"label\" : $data.customer.accountId,",
+        "            \"buttonStyle\" : \"link\",",
+        "\t        \"action\" : \"Open modal\",",
+        "        \t\"modalId\" : \"customerTransactions\",",
+        "        \t\"closeOnSuccess\" : true",
+        "        }",
+        "    }",
+        "]"
+      ],
+      "exposed" : false
+    },
+    "customer" : {
+      "type" : "constant",
+      "value" : [
+        ""
+      ],
+      "exposed" : true
+    }
+  },
+  "hasValidationError" : false,
+  "type" : "fragment"
+}

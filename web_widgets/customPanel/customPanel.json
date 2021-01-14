@@ -1,0 +1,50 @@
+{
+  "designerVersion" : "1.10.12",
+  "previousDesignerVersion" : "1.9.45",
+  "id" : "customPanel",
+  "name" : "Panel",
+  "lastUpdate" : 1603287912377,
+  "template" : "@customPanel.tpl.html",
+  "controller" : "@customPanel.ctrl.js",
+  "custom" : true,
+  "properties" : [
+    {
+      "label" : "Style",
+      "name" : "style",
+      "type" : "choice",
+      "defaultValue" : "primary",
+      "choiceValues" : [
+        "primary",
+        "default",
+        "info",
+        "warning",
+        "danger"
+      ],
+      "bond" : "constant"
+    },
+    {
+      "label" : "Title",
+      "name" : "title",
+      "type" : "text",
+      "bond" : "interpolation"
+    },
+    {
+      "label" : "Content",
+      "name" : "panelContent",
+      "type" : "text",
+      "bond" : "expression"
+    }
+  ],
+  "assets" : [
+    {
+      "id" : "c2037f73-bdac-4095-bd6d-68257b5acf54",
+      "name" : "style.css",
+      "type" : "css",
+      "order" : 1,
+      "external" : false
+    }
+  ],
+  "requiredModules" : [ ],
+  "type" : "widget",
+  "hasHelp" : false
+}

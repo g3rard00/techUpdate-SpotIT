@@ -1,0 +1,156 @@
+{
+  "designerVersion" : "1.11.46",
+  "previousDesignerVersion" : "1.9.24",
+  "id" : "CaseHistory",
+  "name" : "CaseHistory",
+  "lastUpdate" : 1603287958361,
+  "rows" : [
+    [
+      {
+        "type" : "container",
+        "dimension" : {
+          "xs" : 12,
+          "sm" : 12,
+          "md" : 12,
+          "lg" : 12
+        },
+        "propertyValues" : {
+          "cssClasses" : {
+            "type" : "constant",
+            "value" : "timeline-container"
+          },
+          "hidden" : {
+            "type" : "constant",
+            "value" : false
+          },
+          "repeatedCollection" : {
+            "type" : "variable",
+            "value" : ""
+          }
+        },
+        "reference" : "5d570d3f-0c47-416a-86a2-afb8902dc5e8",
+        "hasValidationError" : false,
+        "id" : "pbContainer",
+        "rows" : [
+          [
+            {
+              "type" : "component",
+              "dimension" : {
+                "xs" : 12,
+                "sm" : 12,
+                "md" : 12,
+                "lg" : 12
+              },
+              "propertyValues" : {
+                "cssClasses" : {
+                  "type" : "constant",
+                  "value" : ""
+                },
+                "hidden" : {
+                  "type" : "constant",
+                  "value" : false
+                },
+                "allowHTML" : {
+                  "type" : "constant",
+                  "value" : true
+                },
+                "text" : {
+                  "type" : "interpolation",
+                  "value" : "<h4><span class=\"glyphicon glyphicon-time\" aria-hidden=\"true\"></span> Case history</h4>"
+                },
+                "alignment" : {
+                  "type" : "constant",
+                  "value" : "left"
+                },
+                "labelHidden" : {
+                  "type" : "constant",
+                  "value" : true
+                },
+                "label" : {
+                  "type" : "interpolation",
+                  "value" : ""
+                },
+                "labelPosition" : {
+                  "type" : "constant",
+                  "value" : "top"
+                },
+                "labelWidth" : {
+                  "type" : "constant",
+                  "value" : 4
+                }
+              },
+              "reference" : "efec84ed-a2c3-4278-97e5-f2e67b702b73",
+              "hasValidationError" : false,
+              "id" : "pbText"
+            }
+          ],
+          [
+            {
+              "type" : "component",
+              "dimension" : {
+                "xs" : 12,
+                "sm" : 12,
+                "md" : 12,
+                "lg" : 12
+              },
+              "propertyValues" : {
+                "cssClasses" : {
+                  "type" : "constant",
+                  "value" : ""
+                },
+                "hidden" : {
+                  "type" : "constant",
+                  "value" : false
+                },
+                "events" : {
+                  "type" : "expression",
+                  "value" : "events"
+                }
+              },
+              "reference" : "8020c206-c2ba-4e73-96e4-21973498f549",
+              "hasValidationError" : false,
+              "id" : "customTimeline"
+            }
+          ]
+        ]
+      }
+    ]
+  ],
+  "assets" : [ ],
+  "inactiveAssets" : [ ],
+  "variables" : {
+    "dateFormat" : {
+      "type" : "constant",
+      "value" : [
+        "MMM D, YYYY hh:mm:ss A"
+      ],
+      "exposed" : false
+    },
+    "caseHistory" : {
+      "type" : "constant",
+      "value" : [
+        ""
+      ],
+      "exposed" : true
+    },
+    "events" : {
+      "type" : "expression",
+      "value" : [
+        "if($data.caseHistory){",
+        "    return $data.caseHistory.map(function(task){",
+        "        return {",
+        "            title: task.displayName,",
+        "            time: moment(task.reached_state_date).format($data.dateFormat),",
+        "            user: task.executedBy.firstName+' '+task.executedBy.lastName,",
+        "            body: task.displayDescription",
+        "        };",
+        "    });",
+        "}",
+        "return [];"
+      ],
+      "exposed" : false
+    }
+  },
+  "hasValidationError" : false,
+  "type" : "fragment"
+}

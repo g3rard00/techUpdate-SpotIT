@@ -1,0 +1,161 @@
+{
+  "designerVersion" : "1.11.46",
+  "previousDesignerVersion" : "1.9.24",
+  "id" : "DisputeData",
+  "name" : "DisputeData",
+  "lastUpdate" : 1603287912444,
+  "rows" : [
+    [
+      {
+        "type" : "container",
+        "dimension" : {
+          "xs" : 12,
+          "sm" : 12,
+          "md" : 12,
+          "lg" : 12
+        },
+        "propertyValues" : {
+          "cssClasses" : {
+            "type" : "constant",
+            "value" : "padding-left-20 padding-right-30"
+          },
+          "hidden" : {
+            "type" : "constant",
+            "value" : false
+          },
+          "repeatedCollection" : {
+            "type" : "variable",
+            "value" : ""
+          }
+        },
+        "reference" : "690878ec-a767-4b09-a756-7cc9e5039c5b",
+        "hasValidationError" : false,
+        "id" : "pbContainer",
+        "rows" : [
+          [
+            {
+              "type" : "component",
+              "dimension" : {
+                "xs" : 12,
+                "sm" : 12,
+                "md" : 12,
+                "lg" : 12
+              },
+              "propertyValues" : {
+                "cssClasses" : {
+                  "type" : "constant",
+                  "value" : "panel-fixed-height"
+                },
+                "hidden" : {
+                  "type" : "constant",
+                  "value" : false
+                },
+                "style" : {
+                  "type" : "constant",
+                  "value" : "primary"
+                },
+                "title" : {
+                  "type" : "interpolation",
+                  "value" : "Dispute information"
+                },
+                "panelContent" : {
+                  "type" : "expression",
+                  "value" : "panelContent"
+                }
+              },
+              "reference" : "f56a8f00-3a70-4844-8423-252a42eea323",
+              "hasValidationError" : false,
+              "id" : "customPanel"
+            }
+          ]
+        ]
+      }
+    ]
+  ],
+  "assets" : [ ],
+  "inactiveAssets" : [ ],
+  "variables" : {
+    "dispute" : {
+      "type" : "url",
+      "value" : [
+        "../API/extension/dispute?caseId={{caseId}}"
+      ],
+      "exposed" : false
+    },
+    "dateFormat" : {
+      "type" : "constant",
+      "value" : [
+        "MMM D, YYYY hh:mm:ss A"
+      ],
+      "exposed" : false
+    },
+    "caseId" : {
+      "type" : "constant",
+      "value" : [
+        ""
+      ],
+      "exposed" : true
+    },
+    "panelContent" : {
+      "type" : "expression",
+      "value" : [
+        "if($data.dispute){",
+        "    var result =  [",
+        "            {",
+        "                \"dt\" : \"<span class=\\\"glyphicon glyphicon-calendar\\\"> </span> Opened\",",
+        "                \"dd\" : format($data.dispute.creationDate)",
+        "            },",
+        "            {",
+        "                \"dt\" : \"<span class=\\\"glyphicon glyphicon-calendar\\\"> </span> Last updated\",",
+        "                \"dd\" : format($data.dispute.lastUpdateDate)",
+        "            },",
+        "            {",
+        "                \"dt\" : \"<span class=\\\"glyphicon glyphicon-console\\\"> </span> Status\",",
+        "                \"dd\" : \"<span class=\\\"label label-\"+severity($data.dispute.status)+\"\\\">\"+$data.dispute.status+\"</span>\"",
+        "            },",
+        "            {",
+        "                \"dt\" : \"<span class=\\\"glyphicon glyphicon-\"+ $data.dispute.currency.toLowerCase()+\"\\\"> </span> Amount\",",
+        "                \"dd\" : $data.dispute.amount && $data.dispute.currency ? $data.dispute.amount.toFixed(2) + ' ' +  $data.dispute.currency : ''",
+        "            },",
+        "            {",
+        "                \"dt\" : \"<span class=\\\"glyphicon glyphicon-calendar\\\"> </span> Transaction Date\",",
+        "                \"dd\" : format($data.dispute.txDate)",
+        "            },",
+        "            {",
+        "                \"dt\" : \"<span class=\\\"glyphicon glyphicon-info-sign\\\"> </span> <abbr title=\\\"Merchant Identification Number\\\"> MIN </abbr>\",",
+        "                \"dd\" : $data.dispute.merchantIdNumber ? $data.dispute.merchantIdNumber : \"\"",
+        "            }",
+        "    ]",
+        "    console.log(result);",
+        "    return result;",
+        "}",
+        "",
+        "function format(date){",
+        "    return date ? moment(date).format($data.dateFormat) : ''",
+        "}",
+        "",
+        "function severity(status){",
+        "    switch(status) {",
+        "     case \"Discretionary\": return \"primary\";",
+        "     case \"completed\": return \"success\";",
+        "     case \"error\": return \"danger\";",
+        "     case \"Completed\": return \"success\";",
+        "     case \"Required\": return \"danger\";",
+        "     case \"Optional\": return \"primary\";",
+        "     case \"PENDING\": return \"warning\";",
+        "     case \"RESOLVED\": return \"success\";",
+        "     case \"INVALID\": return \"danger\";",
+        "     case \"INVESTIGATING\": return \"primary\";",
+        "     case \"PROCESSING CHARGEBACK\": return \"primary\";",
+        "     case \"CHARGED BACK\": return \"success\"",
+        "     default:",
+        "       return \"default\";",
+        "   }",
+        "}"
+      ],
+      "exposed" : false
+    }
+  },
+  "hasValidationError" : false,
+  "type" : "fragment"
+}
