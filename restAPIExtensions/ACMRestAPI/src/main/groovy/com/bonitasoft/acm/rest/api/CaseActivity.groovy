@@ -25,8 +25,7 @@ import groovy.json.JsonBuilder
 class CaseActivity implements RestApiController,CaseActivityHelper,BPMNamesConstants {
 
 	private static final String PREFIX = '$'
-	private static final String LIVINGAPP_TOKEN = 'cases'
-
+	
 	@Override
 	RestApiResponse doHandle(HttpServletRequest request, RestApiResponseBuilder responseBuilder, RestAPIContext context) {
 		def caseId = request.getParameter "caseId"
